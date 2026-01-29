@@ -1,0 +1,33 @@
+{
+  "name": "buildops-lite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SiteFlow (BuildOps Lite) - Construction operations management system",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter @buildops/api dev & pnpm --filter @buildops/web dev & pnpm --filter @buildops/worker dev",
+    "build": "pnpm --filter @buildops/shared build && pnpm --filter @buildops/ui build && pnpm -r --filter './apps/*' build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "migrate": "pnpm --filter @buildops/api migrate",
+    "seed": "pnpm --filter @buildops/api seed",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
